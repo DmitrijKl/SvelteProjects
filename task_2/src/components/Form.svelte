@@ -1,16 +1,19 @@
 <script lang="ts">
     import {onMount} from 'svelte'
 
-    let inputOne,inputTwo,currencyOne,currencyTwo,currencyRatesAPI ; 
+    let inputOne:any;
+    let inputTwo:any;
+    let currencyOne:string ;
+    let currencyTwo:string;
+    let currencyRatesAPI:any;
     let price = 0
 
     onMount( ()=>{
         const get = async ()=>{
             try {
                 const res = await fetch('https://v6.exchangerate-api.com/v6/a559267ecfea3096fb4f678b/latest/USD');
-                 currencyRatesAPI = (await res.json()).conversion_rates;
-                
-            } catch (error) {
+                 currencyRatesAPI = (await res.json()).conversion_rates;  
+            } catch (error:any) {
                 console.log(error.message)
             }
         }
